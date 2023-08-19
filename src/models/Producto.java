@@ -2,51 +2,63 @@ package models;
 
 public class Producto {
 
-    public final static int LONGITUD_CATEGORIA_NOMBRE = 2;
-    public final static int LONGITUD_NUMERO_DE_PRODUCTO = 3;
     public final static int LONGITUD_IDENTIFICADOR = 5;
 
-    private String categoria = new String(new char[LONGITUD_CATEGORIA_NOMBRE]);
-    private Integer id_numero = new String(new char[LONGITUD_NUMERO_DE_PRODUCTO]);
     private String identificador = new String(new char[LONGITUD_IDENTIFICADOR]);
-
-    public String getCategoria() {
-    }
-
-    /*
-     * Funcion setCatgoria
-     * Verifica que el nombre de la categoria sea de la longitud permitida
-     * La longitud permitida esta almacenada en la constante "LONGITUD_CATEGORIA"
-     */
-    public void setCategoria(String categoria) {
-        if (categoria.length() > 2) {
-            System.out.println("El nombre de la categoria debe ser de 2 caracteres");
-        } else {
-            this.categoria = categoria;
-        }
-    }
 
     public String getIdentificador() {
         return identificador;
     }
 
+    /*
+     * Convierte un string a un array de chars, luego comprueba que tenga un largo
+     * de 5 caracteres
+     * Luego verifica que los dos primeros caracteres sean letras y si son
+     * minusculas los transforma
+     * a mayusculas
+     * Luego verifica que los 3 siguientes caracteres sean numeros
+     * Si cumple con todas las condisiones se setea el valor correspondiente.
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * CAMBIAR EL VALOR DE 5 POR LA CONSTANTE LONGITUD DEL IDENTIFICADOR
+     * 
+     */
+
     public void setIdentificador(String identificador) {
 
-        if (categoria.length() > 2) {
-            System.out.println("El nombre de la categoria debe ser de 2 caracteres");
+        char[] chars = identificador.toCharArray();
+
+        if (identificador.length() == 5) {
+            if (Character.isLetter(chars[0]) || Character.isLetter(chars[1])) {
+
+                // las convierte en mayusculas
+                if (Character.isLowerCase(chars[0])) {
+                    chars[0] = Character.toUpperCase(chars[0]);
+                }
+                if (Character.isLowerCase(chars[1])) {
+                    chars[1] = Character.toUpperCase(chars[1]);
+                }
+
+                // comprobar que los otros 3 digitos sean numeros
+                for (int i = 2; i < 5; i++) {
+                    if (!Character.isDigit(chars[i])) {
+                        System.out.println("Del 3er al 5 caracter no es un numero");
+                        break;
+                    } else {
+                        this.identificador = new String(chars);
+                    }
+                }
+            }
+
         } else {
-            this.categoria = categoria;
+            System.out.println("El identificador puede contener solamente 5 caracteres alfanumericos");
         }
 
-        /*
-         * if (identificador.length() > 5) {
-         * System.out.
-         * println("El identificador puede contener solamente 5 caracteres alfanumericos"
-         * );
-         * } else {
-         * this.identificador = identificador;
-         * }
-         */
     }
 
     public Producto() {

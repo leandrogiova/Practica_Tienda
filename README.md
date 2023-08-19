@@ -26,11 +26,13 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 La clase Producto va a contar con las siguietes caracteristicas:
 
 * Las constantes:
-        -LONGITUD_CATEGORIA_NOMBRE => sirve para setear el largo del codigo del identificador,con este valor seteamos el largo del lombre de la categoria , es decir, obtener mis, "AB"(representando los grupos envasados),"AC"(para las bebidas), etc
 
-	    -LONGITUD_NUMERO_DE_PRODUCTO -> sirve para setear el largo del codigo del identificador,con este valor seteamos el largo del numero que va a identificar el producto , es decir, obtener mis codigos de producto. Ejemplo, AB123, estos numeros 123 son de un largo de 3 digitos, estos 3 digitos van a ser mi LONGITUD_NUMERO_DE_PRODUCTO
+        --LONGITUD_CATEGORIA_NOMBRE => sirve para setear el largo del codigo del identificador,con este valor seteamos el largo del lombre de la categoria , es decir, obtener mis, "AB"(representando los grupos envasados),"AC"(para las bebidas), etc
 
-        --LONGITUD_CATEGORIA_NOMBRE -> es el identificador del producto, que es una combinacion entre el nombre de la categoria y el numero de producto
+	    --LONGITUD_NUMERO_DE_PRODUCTO => sirve para setear el largo del codigo del identificador,con este valor seteamos el largo del numero que va a identificar el producto , es decir, obtener mis codigos de producto. Ejemplo, AB123, estos numeros 123 son de un largo de 3 digitos, estos 3 digitos van a ser mi LONGITUD_NUMERO_DE_PRODUCTO
+
+        --LONGITUD_CATEGORIA_NOMBRE => es el identificador del producto, que es una combinacion entre el nombre de la categoria y el numero de producto
 
 * Variables:
-    
+
+    -- String categoria => sirve para setear el nombre de la categoria
