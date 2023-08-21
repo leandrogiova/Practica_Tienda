@@ -11,6 +11,8 @@ public class Producto {
     }
 
     /*
+     * Funcion setIdentificador va a setear el identificador(va a ser obligatorio
+     * que contenga 2caracteres y 3 numeros).
      * Convierte un string a un array de chars, luego comprueba que tenga un largo
      * de 5 caracteres
      * Luego verifica que los dos primeros caracteres sean letras y si son
@@ -33,7 +35,7 @@ public class Producto {
 
         char[] chars = identificador.toCharArray();
 
-        if (identificador.length() == 5) {
+        if (identificador.length() == LONGITUD_IDENTIFICADOR) {
             if (Character.isLetter(chars[0]) || Character.isLetter(chars[1])) {
 
                 // las convierte en mayusculas
@@ -45,7 +47,7 @@ public class Producto {
                 }
 
                 // comprobar que los otros 3 digitos sean numeros
-                for (int i = 2; i < 5; i++) {
+                for (int i = 2; i < LONGITUD_IDENTIFICADOR; i++) {
                     if (!Character.isDigit(chars[i])) {
                         System.out.println("Del 3er al 5 caracter no es un numero");
                         break;
@@ -53,10 +55,12 @@ public class Producto {
                         this.identificador = new String(chars);
                     }
                 }
+            } else {
+                System.out.println(
+                        "Los dos primeros caracteres del identifiador deben ser letras.Ejemplo de identificador: AB123");
             }
-
         } else {
-            System.out.println("El identificador puede contener solamente 5 caracteres alfanumericos");
+            System.out.println("El identificador debe contener solamente 2 letras y 5 numeros OBLIGATORIAMENTE");
         }
 
     }
