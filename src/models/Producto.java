@@ -1,10 +1,38 @@
 package models;
 
-public class Producto {
+public abstract class Producto {
 
     public final static int LONGITUD_IDENTIFICADOR = 5;
 
     private String identificador = new String(new char[LONGITUD_IDENTIFICADOR]);
+    private String descripcion;
+    private Float precio;
+    private Float costoPorUnidad;
+    private Integer cantidad;
+
+    public Float getCostoPorUnidad() {
+        return costoPorUnidad;
+    }
+
+    public void setCostoPorUnidad(Float costoPorUnidad) {
+        this.costoPorUnidad = costoPorUnidad;
+    }
+
+    public Float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Float precio) {
+        this.precio = precio;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
 
     public String getIdentificador() {
         return identificador;
@@ -16,21 +44,12 @@ public class Producto {
      * Convierte un string a un array de chars, luego comprueba que tenga un largo
      * de 5 caracteres
      * Luego verifica que los dos primeros caracteres sean letras y si son
-     * minusculas los transforma
-     * a mayusculas
+     * minusculas los transforma a mayusculas
      * Luego verifica que los 3 siguientes caracteres sean numeros
      * Si cumple con todas las condisiones se setea el valor correspondiente.
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * CAMBIAR EL VALOR DE 5 POR LA CONSTANTE LONGITUD DEL IDENTIFICADOR
-     * 
+     * No recibe un String como parametro
+     * No tiene retorno
      */
-
     public void setIdentificador(String identificador) {
 
         char[] chars = identificador.toCharArray();
@@ -49,7 +68,8 @@ public class Producto {
                 // comprobar que los otros 3 digitos sean numeros
                 for (int i = 2; i < LONGITUD_IDENTIFICADOR; i++) {
                     if (!Character.isDigit(chars[i])) {
-                        System.out.println("Del 3er al 5 caracter no es un numero");
+                        System.out.println(
+                                "ERROR! No se seteo el identificador del producto. Del 3er al 5 caracter no es un numero\n\n");
                         break;
                     } else {
                         this.identificador = new String(chars);
@@ -57,15 +77,32 @@ public class Producto {
                 }
             } else {
                 System.out.println(
-                        "Los dos primeros caracteres del identifiador deben ser letras.Ejemplo de identificador: AB123");
+                        "ERROR! No se seteo el identificador del producto. Los dos primeros caracteres del identifiador deben ser letras.Ejemplo de identificador: AB123\n\n");
             }
         } else {
-            System.out.println("El identificador debe contener solamente 2 letras y 5 numeros OBLIGATORIAMENTE");
+            System.out.println(
+                    "ERROR! No se seteo el identificador del producto.El identificador debe contener solamente 2 letras y 5 numeros OBLIGATORIAMENTE\n\n");
         }
 
     }
 
-    public Producto() {
-
+    public String getDescripcion() {
+        return descripcion;
     }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Producto(String identificador, String descripcion, Float precio, Float costoPorUnidad, Integer cantidad) {
+        setIdentificador(identificador);
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.costoPorUnidad = costoPorUnidad;
+        this.cantidad = cantidad;
+    }
+
+    public Producto() {
+    }
+
 }
